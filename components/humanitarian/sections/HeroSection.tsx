@@ -5,11 +5,11 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import "./hero-carousel.css";
 
 const slides = [
-  { image: "education", label: "Education and opportunity", alt: "Young students in a classroom" },
-  { image: "relief", label: "Food and essential supplies", alt: "Volunteers preparing donated supplies" },
-  { image: "healthcare", label: "Access to healthcare", alt: "A doctor speaking with a patient during a check-up" },
-  { image: "community", label: "Stronger communities", alt: "People working together to plant a seedling" },
-  { image: "first-aid", label: "Emergency preparedness", alt: "Participants attending an outdoor first-aid demonstration" },
+  { image: "education", position: "50% 35%", label: "Education and opportunity", alt: "Young students in a classroom" },
+  { image: "relief", position: "50% 24%", label: "Food and essential supplies", alt: "Volunteers preparing donated supplies" },
+  { image: "healthcare", position: "36% 12%", label: "Access to healthcare", alt: "A doctor speaking with a patient during a check-up" },
+  { image: "community", position: "50% 65%", label: "Stronger communities", alt: "Volunteers planting trees together" },
+  { image: "first-aid", position: "43% 20%", label: "Emergency preparedness", alt: "Participants practising CPR on training mannequins" },
 ];
 
 const motionQuery = "(prefers-reduced-motion: reduce)";
@@ -51,6 +51,7 @@ export function HeroSection() {
           <Image
             src={`/hero/${slide.image}.jpg`}
             alt={slide.alt}
+            style={{ objectPosition: slide.position }}
             fill
             sizes="100vw"
             preload={index === 0}
@@ -81,3 +82,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+

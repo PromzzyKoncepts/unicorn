@@ -1,0 +1,59 @@
+.framer-hnwhV .why-we-serve {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  min-width: 0;
+  position: relative;
+  top: auto;
+  overflow: hidden;
+  border: 1px solid #e7e1d2;
+  border-radius: 16px;
+  background: #fffef9;
+}
+
+.why-we-serve-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+.why-we-serve-copy {
+  padding: clamp(20px, 4vw, 38px);
+  color: #44423a;
+  font: 400 16px/1.7 Figtree, sans-serif;
+}
+
+.why-we-serve-copy .why-we-serve-label {
+  color: #925300;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.why-we-serve-copy h2 {
+  margin: 8px 0 16px;
+  color: #1e1e1e;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.why-we-serve-copy p + p {
+  margin-top: 12px;
+}
+
+@media (min-width: 810px) {
+  .framer-hnwhV .why-we-serve {
+    position: sticky;
+    top: clamp(76px, 10vh, 120px);
+  }
+
+  .why-we-serve-photo {
+    max-height: 38vh;
+  }
+}

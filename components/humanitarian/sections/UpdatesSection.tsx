@@ -1,10 +1,11 @@
+import { UpdatesScroll } from "./UpdatesScroll";
 import type { CSSProperties } from "react";
 
 export function UpdatesSection() {
   return (
     <section className={"framer-gt0slx"} data-framer-name={"Updates Section"}>
-      <div className={"framer-gyj5gl"} data-framer-name={"Container"}>
-        <div className={"framer-5d2isd"} data-framer-name={"Content Wrapper"}>
+      <UpdatesScroll>
+        <div className={"framer-5d2isd"} data-updates-pinned>
           <div className={"framer-1nqigej"} data-framer-name={"Content Wrapper"}>
             <div
               className={"framer-suob03"}
@@ -485,7 +486,7 @@ export function UpdatesSection() {
             </div>
           </div>
           <div
-            className={"framer-r5q803 hidden-1eqix2w"}
+            className={"framer-r5q803 hidden-1eqix2w"} data-updates-track
             data-framer-name={"Update Card Wrapper"}
             data-entrance={""}
             style={{ "--entrance-transform": "translateY(60px)" } as CSSProperties}
@@ -1290,8 +1291,9 @@ export function UpdatesSection() {
             </div>
           </div>
         </div>
-        <div className={"framer-4wcs0d hidden-1eqix2w"} data-framer-name={"Tiggger"} id={"tigger"} />
-      </div>
+        <div className={"framer-4wcs0d hidden-1eqix2w"} data-updates-spacer data-framer-name={"Tiggger"} id={"tigger"} />
+      </UpdatesScroll>
     </section>
   );
 }
+

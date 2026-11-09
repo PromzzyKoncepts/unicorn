@@ -20,7 +20,7 @@
 
 .ministry-hero-slide img {
   object-fit: cover;
-  object-position: center 48%;
+
 }
 
 .ministry-hero-shade {
@@ -71,8 +71,16 @@
   outline-offset: -2px;
 }
 
+@media (min-width: 1440px) {
+  .framer-hnwhV .ministry-hero {
+    min-height: 32vw;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ministry-hero-slide {
     transition: none;
   }
 }
+
+

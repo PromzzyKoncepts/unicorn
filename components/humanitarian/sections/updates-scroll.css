@@ -1,0 +1,29 @@
+@media (min-width: 810px) and (prefers-reduced-motion: no-preference) {
+  .framer-hnwhV .updates-scroll [data-updates-pinned] {
+    top: min(120px, calc(100dvh - var(--updates-pinned-height, 0px) - 24px));
+  }
+
+  .updates-scroll [data-updates-track] {
+    translate: var(--updates-offset, 0px) 0;
+  }
+}
+
+@media (min-width: 810px) and (prefers-reduced-motion: reduce) {
+  .framer-hnwhV .updates-scroll [data-updates-pinned] {
+    position: relative;
+    top: auto;
+  }
+
+  .updates-scroll [data-updates-track] {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .updates-scroll [data-updates-track] > div {
+    scroll-snap-align: start;
+  }
+
+  .updates-scroll [data-updates-spacer] {
+    display: none;
+  }
+}
