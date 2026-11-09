@@ -1,3 +1,4 @@
+import { MinistryLogo } from "../ministry-logo";
 import type { CSSProperties } from "react";
 
 export function HowWeWorkSection() {
@@ -16,17 +17,7 @@ export function HowWeWorkSection() {
                 className={"absolute top-0 right-0 bottom-0 left-0"}
                 style={{ "borderRadius": "inherit", "cornerShape": "inherit" } as CSSProperties}
               >
-                <img
-                  decoding={"async"}
-                  width={"1060"}
-                  height={"1064"}
-                  sizes={"(min-width: 1440px) calc(max(min(100vw, 1320px) - 40px, 1px) * 0.207), (min-width: 1200px) and (max-width: 1439.98px) calc(max(min(100vw, 1320px) - 40px, 1px) * 0.207), (min-width: 810px) and (max-width: 1199.98px) calc(max(min(100vw, 990px) - 40px, 1px) * 0.2065), (max-width: 809.98px) calc(max(min(100vw, 620px) - 40px, 1px) * 0.1857)"}
-                  srcSet={"https://framerusercontent.com/images/7PEAMlCwJKs8ubFLcdwfi3aML9Y.png?scale-down-to=1024&width=1060&height=1064 1020w,https://framerusercontent.com/images/7PEAMlCwJKs8ubFLcdwfi3aML9Y.png?width=1060&height=1064 1060w"}
-                  src={"https://framerusercontent.com/images/7PEAMlCwJKs8ubFLcdwfi3aML9Y.png?width=1060&height=1064"}
-                  alt={"Icon"}
-                  className={"block w-full h-full object-center"}
-                  style={{ "borderRadius": "inherit", "cornerShape": "inherit", "objectFit": "contain" } as CSSProperties}
-                />
+                <MinistryLogo />
               </div>
             </div>
           </div>
@@ -576,3 +567,4 @@ export function HowWeWorkSection() {
     </section>
   );
 }
+

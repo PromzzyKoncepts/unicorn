@@ -1,0 +1,78 @@
+.framer-hnwhV .ministry-hero {
+  isolation: isolate;
+  overflow: hidden;
+  background: #28251f;
+}
+
+.ministry-hero-slide, .ministry-hero-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.ministry-hero-slide {
+  opacity: 0;
+  transition: opacity 950ms ease-in-out;
+}
+
+.ministry-hero-slide[data-active="true"] {
+  opacity: 1;
+}
+
+.ministry-hero-slide img {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.ministry-hero-shade {
+  background: linear-gradient(180deg, rgb(15 13 10 / 45%), rgb(15 13 10 / 8%) 42%, rgb(15 13 10 / 75%));
+  pointer-events: none;
+}
+
+.ministry-hero-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  border: 1px solid rgb(255 255 255 / 32%);
+  border-radius: 100px;
+  background: rgb(20 17 13 / 66%);
+}
+
+.ministry-hero-controls button {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.ministry-hero-controls button::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 57%);
+  content: "";
+}
+
+.ministry-hero-controls button[aria-current="true"]::before {
+  background: #ffc46e;
+  box-shadow: 0 0 0 2px rgb(255 196 110 / 25%);
+}
+
+.ministry-hero-controls button:focus-visible {
+  outline: 2px solid #ffc46e;
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ministry-hero-slide {
+    transition: none;
+  }
+}

@@ -1,34 +1,82 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import "./hero-carousel.css";
+
+const slides = [
+  { image: "education", label: "Education and opportunity", alt: "Young students in a classroom" },
+  { image: "relief", label: "Food and essential supplies", alt: "Volunteers preparing donated supplies" },
+  { image: "healthcare", label: "Access to healthcare", alt: "A doctor speaking with a patient during a check-up" },
+  { image: "community", label: "Stronger communities", alt: "People working together to plant a seedling" },
+  { image: "first-aid", label: "Emergency preparedness", alt: "Participants attending an outdoor first-aid demonstration" },
+];
+
+const motionQuery = "(prefers-reduced-motion: reduce)";
+const rotationInterval = 6500;
+
+function subscribeToMotionPreference(onChange: () => void) {
+  const preference = window.matchMedia(motionQuery);
+  preference.addEventListener("change", onChange);
+  return () => preference.removeEventListener("change", onChange);
+}
+
+function getMotionPreference() {
+  return window.matchMedia(motionQuery).matches;
+}
 
 export function HeroSection() {
+  const [active, setActive] = useState(0);
+  const [controlsFocused, setControlsFocused] = useState(false);
+  const reducedMotion = useSyncExternalStore(subscribeToMotionPreference, getMotionPreference, () => true);
+  const playing = !reducedMotion && !controlsFocused;
+
+  useEffect(() => {
+    if (!playing) return;
+    const timer = window.setTimeout(() => {
+      setActive((index) => (index + 1) % slides.length);
+    }, rotationInterval);
+    return () => window.clearTimeout(timer);
+  }, [active, playing]);
+
   return (
-    <section className={"framer-17bdsq4"} data-framer-name={"Hero Section"}>
-      <div
-        className={"framer-1yu2ksj"}
-        data-framer-name={"Background Image Wrapper"}
-        data-entrance={""}
-        style={{ "--entrance-transform": "scale(1.1)" } as CSSProperties}
-      >
-        <div className={"framer-1405z5p"} data-framer-name={"Oervlay"} />
-        <div className={"framer-1bmf9wi"} data-framer-name={"Image"}>
-          <div
-            data-framer-background-image-wrapper={"true"}
-            className={"absolute top-0 right-0 bottom-0 left-0"}
-            style={{ "borderRadius": "inherit", "cornerShape": "inherit" } as CSSProperties}
-          >
-            <img
-              decoding={"async"}
-              width={"5760"}
-              height={"1845"}
-              sizes={"(min-width: 1440px) 100vw, (min-width: 1200px) and (max-width: 1439.98px) 100vw, (min-width: 810px) and (max-width: 1199.98px) 100vw, (max-width: 809.98px) 100vw"}
-              srcSet={"https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?scale-down-to=512&width=5760&height=1845 512w,https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?scale-down-to=1024&width=5760&height=1845 1024w,https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?scale-down-to=2048&width=5760&height=1845 2048w,https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?scale-down-to=4096&width=5760&height=1845 4096w,https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?width=5760&height=1845 5760w"}
-              src={"https://framerusercontent.com/images/mzsyOF7yJcdXL64g3UdbhyVl1E.png?width=5760&height=1845"}
-              alt={"Image"}
-              className={"block w-full h-full object-center object-cover"}
-              style={{ "borderRadius": "inherit", "cornerShape": "inherit" } as CSSProperties}
-            />
-          </div>
+    <section className="framer-17bdsq4 ministry-hero" aria-label="Humanitarian work photo carousel">
+      {slides.map((slide, index) => (
+        <div
+          className="ministry-hero-slide"
+          data-active={index === active}
+          aria-hidden={index !== active}
+          key={slide.image}
+        >
+          <Image
+            src={`/hero/${slide.image}.jpg`}
+            alt={slide.alt}
+            fill
+            sizes="100vw"
+            preload={index === 0}
+            fetchPriority={index === 0 ? undefined : "low"}
+          />
         </div>
+      ))}
+      <div className="ministry-hero-shade" aria-hidden="true" />
+      <div
+        className="ministry-hero-controls"
+        role="group"
+        aria-label="Choose a carousel photo"
+        onFocus={() => setControlsFocused(true)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setControlsFocused(false);
+        }}
+      >
+        {slides.map((slide, index) => (
+          <button
+            aria-label={`Show photo ${index + 1}: ${slide.label}`}
+            aria-current={index === active ? "true" : undefined}
+            key={slide.image}
+            onClick={() => setActive(index)}
+            type="button"
+          />
+        ))}
       </div>
     </section>
   );

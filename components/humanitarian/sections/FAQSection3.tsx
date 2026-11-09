@@ -4,7 +4,7 @@ import "./homepage-faq.css";
 const questions = [
   {
     question: "What is the mission of our foundation?",
-    answer: "Our team brings humanitarian assistance and hope to people and communities facing some of the greatest needs around the world.",
+    answer: "Our team bring humanitarian assistance and hope to people and communities facing some of the greatest needs around the world.",
   },
   {
     question: "How can I make a donation?",
