@@ -1,0 +1,77 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+[data-accordion-open="false"] [data-framer-name="Answer Wrap"] {
+  display: none !important;
+}
+
+[data-accordion-open="true"] [data-framer-name="Answer Wrap"] {
+  display: flex !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
+
+[data-mobile-menu="closed"] ul[data-framer-name="Phone"] {
+  display: none !important;
+}
+
+[data-mobile-menu="open"] ul[data-framer-name="Phone"] {
+  display: flex !important;
+  height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-video-playing="true"] :is([data-framer-name="Play"], [data-framer-name="Phone Play"])[tabindex] {
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+[data-video-playing="true"]:hover :is([data-framer-name="Play"], [data-framer-name="Phone Play"])[tabindex],
+[data-video-playing="true"] :is([data-framer-name="Play"], [data-framer-name="Phone Play"])[tabindex]:focus-visible {
+  opacity: 1;
+}
+
+[data-journal-filter="Water"] [data-journal-category]:not([data-journal-category="Water"]),
+[data-journal-filter="Education"] [data-journal-category]:not([data-journal-category="Education"]),
+[data-journal-filter="Enterprise"] [data-journal-category]:not([data-journal-category="Enterprise"]),
+[data-journal-filter="Agriculture"] [data-journal-category]:not([data-journal-category="Agriculture"]),
+[data-journal-filter="What Went Wrong"] [data-journal-category]:not([data-journal-category="What Went Wrong"]),
+[data-journal-filter="Operations"] [data-journal-category]:not([data-journal-category="Operations"]) {
+  display: none !important;
+}
+
+button[aria-pressed] {
+  appearance: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+button[aria-pressed="true"] {
+  background: #1e1e1e !important;
+}
+
+button[aria-pressed="true"] .framer-text {
+  color: white !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes almswell-entrance {
+    from {
+      opacity: 0;
+      transform: var(--entrance-transform);
+    }
+  }
+
+  [data-entrance] {
+    animation: almswell-entrance 650ms ease-out backwards;
+  }
+}
+
+[data-mobile-menu="open"] .framer-3an9zp-container {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
