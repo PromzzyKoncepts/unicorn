@@ -33,11 +33,11 @@
   opacity: 1;
 }
 
-[data-journal-filter="Water"] [data-journal-category]:not([data-journal-category="Water"]),
+[data-journal-filter="Relief"] [data-journal-category]:not([data-journal-category="Relief"]),
 [data-journal-filter="Education"] [data-journal-category]:not([data-journal-category="Education"]),
-[data-journal-filter="Enterprise"] [data-journal-category]:not([data-journal-category="Enterprise"]),
-[data-journal-filter="Agriculture"] [data-journal-category]:not([data-journal-category="Agriculture"]),
-[data-journal-filter="What Went Wrong"] [data-journal-category]:not([data-journal-category="What Went Wrong"]),
+[data-journal-filter="Leadership"] [data-journal-category]:not([data-journal-category="Leadership"]),
+[data-journal-filter="Well-being"] [data-journal-category]:not([data-journal-category="Well-being"]),
+[data-journal-filter="Emergency Care"] [data-journal-category]:not([data-journal-category="Emergency Care"]),
 [data-journal-filter="Operations"] [data-journal-category]:not([data-journal-category="Operations"]) {
   display: none !important;
 }
@@ -58,7 +58,7 @@ button[aria-pressed="true"] .framer-text {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes almswell-entrance {
+  @keyframes site-entrance {
     from {
       opacity: 0;
       transform: var(--entrance-transform);
@@ -66,12 +66,20 @@ button[aria-pressed="true"] .framer-text {
   }
 
   [data-entrance] {
-    animation: almswell-entrance 650ms ease-out backwards;
+    animation: site-entrance 650ms ease-out backwards;
   }
 }
 
 [data-mobile-menu="open"] .framer-3an9zp-container {
   opacity: 1 !important;
   pointer-events: auto !important;
+}
+
+
+.ministry-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-inline: auto;
 }
 

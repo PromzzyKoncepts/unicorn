@@ -1,1 +1,2 @@
-export { default } from "@/components/almswell/pages/404";
+export { default } from "@/components/humanitarian/pages/404";
+

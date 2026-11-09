@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { JournalCategories } from "@/components/almswell/interactions";
-import { routes } from "@/components/almswell/routes";
+import { JournalCategories } from "@/components/humanitarian/interactions";
+import { routes } from "@/components/humanitarian/routes";
 
 type RoutePath = keyof typeof routes;
 type PageProps = { params: Promise<{ slug?: string[] }> };
@@ -42,4 +42,5 @@ export default async function Page({ params }: PageProps) {
     <Content />
   );
 }
+
 
